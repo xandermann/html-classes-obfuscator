@@ -1,0 +1,5 @@
+__pycache__/
+tmp/
+dist/
+build/
+html_classes_obfuscator.egg-info/

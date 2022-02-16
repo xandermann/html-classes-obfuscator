@@ -1,0 +1,48 @@
+/* BASICS TESTS */
+.test_1 {
+  color: grey;
+}
+
+.test_2 {
+  color: blue;
+}
+
+.test_3 > .test_4 {
+  color: orange;
+}
+
+.test_3 .test_5 {
+  color: aquamarine;
+}
+
+/* =========== */
+
+.test_7 {
+  color: aliceblue;
+}
+
+.test_6 {
+  color: aliceblue;
+}
+
+/* NAVBAR TESTS */
+.test_8.test_9 .test_10 > a.test_11.test_12 {
+  color: green;
+}
+
+/* RESPONSIVE TESTS */
+@media screen and (min-width: 700px) {
+  .test_13 {
+    color: red;
+  }
+
+  .test_14 {
+    width: 25%;
+    background-color: gray;
+  }
+}
+
+/* PSEUDO CSS CLASSES */
+.test_15 p:not(.test_16, div) {
+  color: blueviolet;
+}

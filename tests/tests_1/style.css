@@ -1,0 +1,48 @@
+/* BASICS TESTS */
+.double {
+  color: grey;
+}
+
+.section_second {
+  color: blue;
+}
+
+.parent > .direct_child {
+  color: orange;
+}
+
+.parent .not_direct_child {
+  color: aquamarine;
+}
+
+/* =========== */
+
+.aaa {
+  color: aliceblue;
+}
+
+.aa {
+  color: aliceblue;
+}
+
+/* NAVBAR TESTS */
+.navbar.is-light .navbar-brand > a.navbar-item.is-active {
+  color: green;
+}
+
+/* RESPONSIVE TESTS */
+@media screen and (min-width: 700px) {
+  .lg\:red {
+    color: red;
+  }
+
+  .lg\:w-1\/4 {
+    width: 25%;
+    background-color: gray;
+  }
+}
+
+/* PSEUDO CSS CLASSES */
+.pseudo p:not(.not_me, div) {
+  color: blueviolet;
+}
