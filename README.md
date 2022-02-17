@@ -39,8 +39,8 @@ pip install html-classes-obfuscator
 
 ```python
 import glob
-import string
 import random
+import string
 from html_classes_obfuscator import html_classes_obfuscator
 
 # [...]
