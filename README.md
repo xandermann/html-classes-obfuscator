@@ -63,7 +63,7 @@ def generate_class(current_classes_list):
 
     return random_class
 
-html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
+html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
 ```
 
 ---
