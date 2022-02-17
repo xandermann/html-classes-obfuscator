@@ -39,13 +39,19 @@ pip install html-classes-obfuscator
 
 ```python
 import glob
+import string
+import random
 from html_classes_obfuscator import html_classes_obfuscator
 
 # [...]
 
-htmlfiles = glob.glob("./**/*.index.html", recursive=True)
-cssfiles = glob.glob("./**/*.style.css", recursive=True)
-jsfiles = glob.glob("./**/*.script.js", recursive=True)
+htmlfiles = glob.glob("./**/*.html", recursive=True)
+cssfiles = glob.glob("./**/*.css", recursive=True)
+jsfiles = glob.glob("./**/*.js", recursive=True)
+
+print(htmlfiles)
+print(cssfiles)
+print(jsfiles)
 
 # Generate random string
 def generate_class(current_classes_list):
@@ -57,7 +63,7 @@ def generate_class(current_classes_list):
 
     return random_class
 
-html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generateclass)
+html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
 ```
 
 ---
