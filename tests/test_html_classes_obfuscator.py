@@ -13,16 +13,16 @@ class TestHtmlClassesObfuscator(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         # TODO : add for multiples test folders
-        shutil.copytree('./tests/tests_1', cls.TMP_FOLDER)
+        shutil.copytree('./tests/tests_1', cls.TMP_FOLDER + "/tests_1")
 
     @classmethod
     def tearDownClass(cls) -> None:
         shutil.rmtree(cls.TMP_FOLDER)
 
     def test_html_classes_obfuscator(self) -> None:
-        htmlfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/index.html", recursive=True)
-        cssfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/style.css", recursive=True)
-        jsfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/script.js", recursive=True)
+        htmlfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/tests_1/index.html", recursive=True)
+        cssfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/tests_1/style.css", recursive=True)
+        jsfiles = glob.glob(TestHtmlClassesObfuscator.TMP_FOLDER + "/tests_1/script.js", recursive=True)
 
         TestHtmlClassesObfuscator.counter = 0
         def generateclass(current_classes_list):
