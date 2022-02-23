@@ -76,7 +76,7 @@ html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, ge
 ## ✅ Run tests
 
 ```python
-python3 -m unittest tests/test_html_classes_obfuscator.py
+python3 -m unittest tests/*.py
 ```
 
 ## 🤝 Contributing
