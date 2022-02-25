@@ -55,13 +55,17 @@ print(jsfiles)
 
 # Generate random string
 def generate_class(current_classes_list):
-    random_class = ''.join(random.choice(string.ascii_lowercase) for i in range(6))
 
-    # As we generate random strings, we need to assure that there is no collisions between already converted classes
-    while random_class in current_classes_list:
-        random_class = ''.join(random.choice(string.ascii_lowercase) for i in range(6))
+    def random_class():
+        # Offers (26*2)^6 random class name possibilities
+        return ''.join(random.choice(string.ascii_letters) for i in range(6))
 
-    return random_class
+    res = random_class()
+
+    while res in current_classes_list.values():
+        res = random_class()
+
+    return res
 
 html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
 ```
