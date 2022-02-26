@@ -43,10 +43,15 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
             # --------------------------------------------------
 
             for i, classes in enumerate(classes_groups):
+                print(i, classes)
+                print(obfuscate_classes_groups[i], len(obfuscate_classes_groups[i]))
 
                 old_no_quote = "class=" + classes_groups[i]
                 old_with_quote = 'class="' + classes_groups[i] + '"'
-                replace_by = 'class=' + obfuscate_classes_groups[i] + ''
+                if len(obfuscate_classes_groups[i]) > 0:
+                    replace_by = 'class="' + obfuscate_classes_groups[i] + '"'
+                else:
+                    replace_by = 'class=' + obfuscate_classes_groups[i] + ''
 
                 # Replace like : class=navbar-item by class="{{ obfuscate_classes_groups }}"
                 # Or replace like : class="navbar p-5" (with quote this time)
