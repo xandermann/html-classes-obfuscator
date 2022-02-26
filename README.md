@@ -5,16 +5,16 @@
 > _Normal HTML file_ :
 
 ```html
-<div class="content">
-  <div class="text">Hello World</div>
+<div class="card w-50">
+  <div class="card-body">Hello World</div>
 </div>
 ```
 
 > _Obfuscated HTML file_ :
 
 ```html
-<div class="oywdon">
-  <div class="emnpzm">Hello World</div>
+<div class="oywdon tgmvkg">
+  <div class=emnpzm>Hello World</div>
 </div>
 ```
 
