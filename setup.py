@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = '0.0.5'
+VERSION = '0.0.6'
 
 # Setting up
 setup(
