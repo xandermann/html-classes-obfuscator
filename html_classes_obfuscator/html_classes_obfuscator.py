@@ -43,12 +43,10 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
             # --------------------------------------------------
 
             for i, classes in enumerate(classes_groups):
-                print(i, classes)
-                print(obfuscate_classes_groups[i], len(obfuscate_classes_groups[i]))
 
                 old_no_quote = "class=" + classes_groups[i]
                 old_with_quote = 'class="' + classes_groups[i] + '"'
-                if len(obfuscate_classes_groups[i]) > 0:
+                if len(obfuscate_classes_groups[i].split()) > 1:
                     replace_by = 'class="' + obfuscate_classes_groups[i] + '"'
                 else:
                     replace_by = 'class=' + obfuscate_classes_groups[i] + ''
