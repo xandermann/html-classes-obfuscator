@@ -1,6 +1,6 @@
 # 👋 HTML-Classes-Obfuscator 🔒
 
-> CLI that obfuscate HTML classes:
+> CLI tool that obfuscates HTML classes:
 >
 > _Normal HTML file_ :
 
@@ -20,7 +20,7 @@
 
 ## 🚀 Usage
 
-Using by command line
+Via command line...
 
 ```bash
 git clone git@github.com:xandermann/html-classes-obfuscator.git
@@ -30,7 +30,7 @@ cp html-classes-obfuscator/html_classes_obfuscator/html_classes_obfuscator.py ./
 python3 html_classes_obfuscator.py --htmlpath="**/*.html" --csspath="**/*.css" --jspath="**/*.js"
 ```
 
-Or using in python script
+...Or via a python script
 
 ```bash
 # https://pypi.org/project/html-classes-obfuscator/
