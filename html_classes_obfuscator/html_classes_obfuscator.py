@@ -30,7 +30,7 @@ def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), class_g
                 obfuscate_classes_groups.append([])
 
                 for old_class_name in div_of_classes:
-                    if not old_class_name in equivalents_HTMLClasses_ObfuscatedHTMLClasses:
+                    if old_class_name not in equivalents_HTMLClasses_ObfuscatedHTMLClasses:
                         equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name] = class_generator(equivalents_HTMLClasses_ObfuscatedHTMLClasses)
                     obfuscate_classes_groups[i].append(equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name])
 
