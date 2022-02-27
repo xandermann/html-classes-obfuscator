@@ -104,19 +104,25 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
             f.seek(0)
             f.write(file_content)
             f.truncate()
+            
+    
+def get_files():
+    return {
+        "htmlfiles": glob.glob(flags_command_line['htmlpath'], recursive=True), 
+        "cssfiles": glob.glob(flags_command_line['csspath'], recursive=True),
+        "jsfiles": glob.glob(flags_command_line['jspath'], recursive=True),
+    }
 
 
 if __name__ == '__main__':
     flags_command_line = dict(map(lambda x: x.lstrip('-').split('='),sys.argv[1:]))
-
-    htmlfiles = glob.glob(flags_command_line['htmlpath'], recursive=True)
-    cssfiles = glob.glob(flags_command_line['csspath'], recursive=True)
-    jsfiles = glob.glob(flags_command_line['jspath'], recursive=True)
+    
+    files = get_files()
 
     print()
-    print("HTML files are:" + str(htmlfiles))
-    print("CSS files are:" + str(cssfiles))
-    print("JS files are:" + str(jsfiles))
+    print("HTML files are: " + str(files["htmlfiles"]))
+    print("CSS files are: " + str(files["cssfiles"]))
+    print("JS files are: " + str(files["jsfiles"]))
     print()
 
     # Generate random string
@@ -133,5 +139,5 @@ if __name__ == '__main__':
 
         return res
 
-    html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
+    html_classes_obfuscator(files["htmlfiles"], files["cssfiles"], files["jsfiles"], generate_class)
 
