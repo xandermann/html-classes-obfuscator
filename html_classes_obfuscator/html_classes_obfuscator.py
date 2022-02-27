@@ -7,7 +7,7 @@ import uuid
 from typing import Callable, Dict
 
 
-def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
+def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
 
     # Dict<HTMLClasses, ObfuscatedHTMLClasses>
     equivalents_HTMLClasses_ObfuscatedHTMLClasses = {}
