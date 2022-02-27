@@ -7,7 +7,7 @@ import uuid
 from typing import Callable, Dict
 
 
-def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
+def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), class_generator : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
 
     # Dict<HTMLClasses, ObfuscatedHTMLClasses>
     equivalents_HTMLClasses_ObfuscatedHTMLClasses = {}
@@ -31,7 +31,7 @@ def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), generat
 
                 for old_class_name in div_of_classes:
                     if not old_class_name in equivalents_HTMLClasses_ObfuscatedHTMLClasses:
-                        equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name] = generate_class(equivalents_HTMLClasses_ObfuscatedHTMLClasses)
+                        equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name] = class_generator(equivalents_HTMLClasses_ObfuscatedHTMLClasses)
                     obfuscate_classes_groups[i].append(equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name])
 
             for i, classes in enumerate(obfuscate_classes_groups):
