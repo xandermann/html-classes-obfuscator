@@ -7,13 +7,13 @@ import uuid
 from typing import Callable, Dict
 
 
-def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
+def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
 
     # Dict<HTMLClasses, ObfuscatedHTMLClasses>
     equivalents_HTMLClasses_ObfuscatedHTMLClasses = {}
 
     # Regex to fetch HTML classes in the file
-    html_class_regex = "class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
+    html_class_regex = r"class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
 
     # Fetch HTML classes and rename them
     for htmlfile in htmlfiles:
