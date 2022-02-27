@@ -13,7 +13,7 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
     equivalents_HTMLClasses_ObfuscatedHTMLClasses = {}
 
     # Regex to fetch HTML classes in the file
-    html_class_regex = "class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
+    html_class_regex = r"class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
 
     # Fetch HTML classes and rename them
     for htmlfile in htmlfiles:
