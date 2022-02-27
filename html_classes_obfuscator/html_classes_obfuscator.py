@@ -7,13 +7,13 @@ import uuid
 from typing import Callable, Dict
 
 
-def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generate_class : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
+def html_classes_obfuscator(htmlfiles = (), cssfiles = (), jsfiles = (), class_generator : Callable[[Dict], str] = lambda current_classes_list : "_" + str(uuid.uuid4())):
 
     # Dict<HTMLClasses, ObfuscatedHTMLClasses>
     equivalents_HTMLClasses_ObfuscatedHTMLClasses = {}
 
     # Regex to fetch HTML classes in the file
-    html_class_regex = "class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
+    html_class_regex = r"class=[\"\']?((?:.(?![\"\']?\s+(?:\S+)=|\s*\/?[>\"\']))+.)[\"\']?"
 
     # Fetch HTML classes and rename them
     for htmlfile in htmlfiles:
@@ -30,8 +30,8 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
                 obfuscate_classes_groups.append([])
 
                 for old_class_name in div_of_classes:
-                    if not old_class_name in equivalents_HTMLClasses_ObfuscatedHTMLClasses:
-                        equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name] = generate_class(equivalents_HTMLClasses_ObfuscatedHTMLClasses)
+                    if old_class_name not in equivalents_HTMLClasses_ObfuscatedHTMLClasses:
+                        equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name] = class_generator(equivalents_HTMLClasses_ObfuscatedHTMLClasses)
                     obfuscate_classes_groups[i].append(equivalents_HTMLClasses_ObfuscatedHTMLClasses[old_class_name])
 
             for i, classes in enumerate(obfuscate_classes_groups):
@@ -104,19 +104,25 @@ def html_classes_obfuscator(htmlfiles = [], cssfiles = [], jsfiles = [], generat
             f.seek(0)
             f.write(file_content)
             f.truncate()
+            
+    
+def get_files():
+    return {
+        "htmlfiles": glob.glob(flags_command_line['htmlpath'], recursive=True), 
+        "cssfiles": glob.glob(flags_command_line['csspath'], recursive=True),
+        "jsfiles": glob.glob(flags_command_line['jspath'], recursive=True),
+    }
 
 
 if __name__ == '__main__':
     flags_command_line = dict(map(lambda x: x.lstrip('-').split('='),sys.argv[1:]))
-
-    htmlfiles = glob.glob(flags_command_line['htmlpath'], recursive=True)
-    cssfiles = glob.glob(flags_command_line['csspath'], recursive=True)
-    jsfiles = glob.glob(flags_command_line['jspath'], recursive=True)
+    
+    files = get_files()
 
     print()
-    print("HTML files are:" + str(htmlfiles))
-    print("CSS files are:" + str(cssfiles))
-    print("JS files are:" + str(jsfiles))
+    print("HTML files are: " + str(files["htmlfiles"]))
+    print("CSS files are: " + str(files["cssfiles"]))
+    print("JS files are: " + str(files["jsfiles"]))
     print()
 
     # Generate random string
@@ -133,5 +139,5 @@ if __name__ == '__main__':
 
         return res
 
-    html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, generate_class)
+    html_classes_obfuscator(files["htmlfiles"], files["cssfiles"], files["jsfiles"], generate_class)
 

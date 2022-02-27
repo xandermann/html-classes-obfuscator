@@ -1,4 +1,4 @@
-import codecs
+import codecs as _
 import os
 
 from setuptools import find_packages, setup
