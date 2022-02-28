@@ -171,7 +171,7 @@ def html_classes_obfuscator(htmlfiles=(), cssfiles=(), jsfiles=(), class_generat
                 classes_groups,
                 obfuscate_classes_groups,
                 equivalents_obfuscated_html_classes) = parse_html_class_names(
-                file.read(),
+                old_html,
                 equivalents_obfuscated_html_classes,
                 class_generator)
 
