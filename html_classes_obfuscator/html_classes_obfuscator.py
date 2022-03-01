@@ -70,7 +70,8 @@ def generate_html(
     for i, _ in enumerate(classes_groups):
 
         old_no_quote = "class=" + classes_groups[i]
-        old_with_quote = 'class="' + classes_groups[i] + '"'
+        old_with_simple_quote = "class='" + classes_groups[i] + "'"
+        old_with_double_quote = 'class="' + classes_groups[i] + '"'
 
         # Check if we need to generate quotes or not for the attributes
         # class=test_1
@@ -83,7 +84,8 @@ def generate_html(
         # Replace like : class=navbar-item by class="{{ obfuscate_classes_groups }}"
         # Or replace like : class="navbar p-5" (with quote this time)
         html_content = html_content.replace(old_no_quote, replace_by)
-        html_content = html_content.replace(old_with_quote, replace_by)
+        html_content = html_content.replace(old_with_simple_quote, replace_by)
+        html_content = html_content.replace(old_with_double_quote, replace_by)
 
     return html_content
 

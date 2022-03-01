@@ -3,3 +3,10 @@ max-line-length=240
 
 [DESIGN]
 max-locals=17
+
+[MASTER]
+init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+
+[MISCELLANEOUS]
+notes=
+; notes=FIXME,XXX,TODO

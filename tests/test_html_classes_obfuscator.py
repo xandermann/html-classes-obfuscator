@@ -12,7 +12,6 @@ class TestHtmlClassesObfuscator(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        # TODO : add for multiples test folders
         shutil.copytree('./tests/tests_1', cls.TMP_FOLDER + "/tests_1")
 
     @classmethod
