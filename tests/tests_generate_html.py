@@ -47,3 +47,9 @@ class TestsGenerateHTML(unittest.TestCase):
         new_html = html_classes_obfuscator.generate_html("<div class=hello title=hello>hello</div>", ["hello"], ["test_1"])
         expected_new_html = "<div class=test_1 title=hello>hello</div>"
         self.assertEqual(new_html, expected_new_html)
+
+    def test_generate_html_with_brackets_in_class_name(self) -> None:
+        """Test with `[` and `]` case"""
+        new_html = html_classes_obfuscator.generate_html("<div class='after:h-[2px]'>hello</div>", ["after:h-[2px]"], ["test_1"])
+        expected_new_html = "<div class=test_1>hello</div>"
+        self.assertEqual(new_html, expected_new_html)

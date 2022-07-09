@@ -110,6 +110,8 @@ def generate_css(css_content: str = "", equivalent_class: Dict = ()) -> str:
         # Example: a class like "lg:1/4" should be "lg\:1\/4" in CSS
         old_class_name = old_class_name.replace(":", "\\:")
         old_class_name = old_class_name.replace("/", "\\/")
+        old_class_name = old_class_name.replace("[", "\\[")
+        old_class_name = old_class_name.replace("]", "\\]")
 
         css_content = css_content.replace(
             "." + old_class_name, "." + new_class_name)
