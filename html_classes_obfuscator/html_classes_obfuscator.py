@@ -67,11 +67,11 @@ def generate_html(
         str: Obfuscated HTML
     """
 
-    for i, _ in enumerate(classes_groups):
+    for i, classes_group in enumerate(classes_groups):
 
-        old_no_quote = "class=" + classes_groups[i]
-        old_with_simple_quote = "class='" + classes_groups[i] + "'"
-        old_with_double_quote = 'class="' + classes_groups[i] + '"'
+        old_no_quote = "class=" + classes_group
+        old_with_simple_quote = "class='" + classes_group + "'"
+        old_with_double_quote = 'class="' + classes_group + '"'
 
         # Check if we need to generate quotes or not for the attributes
         # class=test_1
