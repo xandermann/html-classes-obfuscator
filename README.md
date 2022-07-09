@@ -76,6 +76,10 @@ html_classes_obfuscator.html_classes_obfuscator(htmlfiles, cssfiles, jsfiles, ge
 
 1. **Make a backup before use.**
 2. DON'T use if you have duplicate class names in your css files.
+3. If you modify the class generator, be sure that the generated name doesn’t begin with a number:
+
+> In CSS, identifiers (including element names, classes, and IDs in selectors) can contain only the characters [a-zA-Z0-9] and ISO 10646 characters U+00A0 and higher, plus the hyphen (-) and the underscore (_); they cannot start with a digit, two hyphens, or a hyphen followed by a digit. Identifiers can also contain escaped characters and any ISO 10646 character as a numeric code (see next item). For instance, the identifier “B&W?” may be written as “B&W?” or “B\26 W\3F”.
+> https://www.w3.org/TR/CSS21/syndata.html#characters
 
 ## ✅ Run tests
 
