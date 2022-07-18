@@ -41,3 +41,9 @@ class TestsGenerateCSS(unittest.TestCase):
         new_css = html_classes_obfuscator.generate_css(r".after\:h-\[2px\]::after{height:2px}", {"after:h-[2px]": "test_1"})
         expected_new_css = '.test_1::after{height:2px}'
         self.assertEqual(new_css, expected_new_css)
+
+    def test_generate_css_with_percentage(self) -> None:
+        """Test with `%` case"""
+        new_css = html_classes_obfuscator.generate_css(r".max-w-\[80\%\]{color:blue}", {"max-w-[80%]": "test_1"})
+        expected_new_css = '.test_1{color:blue}'
+        self.assertEqual(new_css, expected_new_css)

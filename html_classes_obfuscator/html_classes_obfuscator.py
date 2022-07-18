@@ -112,6 +112,7 @@ def generate_css(css_content: str = "", equivalent_class: Dict = ()) -> str:
         old_class_name = old_class_name.replace("/", "\\/")
         old_class_name = old_class_name.replace("[", "\\[")
         old_class_name = old_class_name.replace("]", "\\]")
+        old_class_name = old_class_name.replace("%", "\\%")
 
         css_content = css_content.replace(
             "." + old_class_name, "." + new_class_name)

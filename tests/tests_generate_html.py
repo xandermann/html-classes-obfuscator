@@ -53,3 +53,9 @@ class TestsGenerateHTML(unittest.TestCase):
         new_html = html_classes_obfuscator.generate_html("<div class='after:h-[2px]'>hello</div>", ["after:h-[2px]"], ["test_1"])
         expected_new_html = "<div class=test_1>hello</div>"
         self.assertEqual(new_html, expected_new_html)
+
+    def test_generate_html_with_percentage(self) -> None:
+        """Test with `%` case"""
+        new_html = html_classes_obfuscator.generate_html("<div class='max-w-[80%]'></div>", ["max-w-[80%]"], ["test_1"])
+        expected_new_html = "<div class=test_1></div>"
+        self.assertEqual(new_html, expected_new_html)
