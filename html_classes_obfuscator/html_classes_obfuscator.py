@@ -108,7 +108,7 @@ def generate_css(css_content: str = "", equivalent_class: Dict = ()) -> str:
 
         # CSS classes modifications
         # Example: a class like "lg:1/4" should be "lg\:1\/4" in CSS
-        list_char_to_escape = {"!", "\"", "#", "$", "&", "'", "(", ")", "*", "+", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "`", "{", "|", "}", "~", ":", "%", "&"}
+        list_char_to_escape = {"!", "\"", "#", "$", "&", "'", "(", ")", "*", "+", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "`", "{", "|", "}", "~","%"}
 
         # No need to escape "-"
 
