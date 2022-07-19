@@ -24,6 +24,12 @@ class TestsGenerateCSS(unittest.TestCase):
         expected_new_css = '.test_1 .test_2{color:blue}'
         self.assertEqual(new_css, expected_new_css)
 
+    def test_class_name_in_a_name(self) -> None:
+        """Test with `rgba()` function case"""
+        new_css = html_classes_obfuscator.generate_css(r".hello .hello-world {color: red}", {"hello": "test_1", "hello-world": "test_2"})
+        expected_new_css = r".test_1 .test_2 {color: red}"
+        self.assertEqual(new_css, expected_new_css)
+
     def test_generate_css_tailwind_case(self) -> None:
         """Test"""
         new_css = html_classes_obfuscator.generate_css(r'.lg\:1\/4{color:blue}', {"lg:1/4": "test_1"})
@@ -46,4 +52,10 @@ class TestsGenerateCSS(unittest.TestCase):
         """Test with `%` case"""
         new_css = html_classes_obfuscator.generate_css(r".max-w-\[80\%\]{color:blue}", {"max-w-[80%]": "test_1"})
         expected_new_css = '.test_1{color:blue}'
+        self.assertEqual(new_css, expected_new_css)
+
+    def test_generate_css_with_color_rgba(self) -> None:
+        """Test with `rgba()` function case"""
+        new_css = html_classes_obfuscator.generate_css(r".group-hover\:bg-\[rgba\(0\2c 0\2c 0\2c 0\.6\)\] {}", {"group-hover:bg-[rgba(0,0,0,0.6)]": "test_1"})
+        expected_new_css = r'.test_1 {}'
         self.assertEqual(new_css, expected_new_css)

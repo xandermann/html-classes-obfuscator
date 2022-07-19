@@ -108,11 +108,15 @@ def generate_css(css_content: str = "", equivalent_class: Dict = ()) -> str:
 
         # CSS classes modifications
         # Example: a class like "lg:1/4" should be "lg\:1\/4" in CSS
-        old_class_name = old_class_name.replace(":", "\\:")
-        old_class_name = old_class_name.replace("/", "\\/")
-        old_class_name = old_class_name.replace("[", "\\[")
-        old_class_name = old_class_name.replace("]", "\\]")
-        old_class_name = old_class_name.replace("%", "\\%")
+        list_char_to_escape = {"!", "\"", "#", "$", "&", "'", "(", ")", "*", "+", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "`", "{", "|", "}", "~", ":", "%", "&"}
+
+        # No need to escape "-"
+
+        for char in list_char_to_escape:
+            old_class_name = old_class_name.replace(char, "\\" + char)
+
+        # Tailwind's way to escape "," :
+        old_class_name = old_class_name.replace(",", "\\2c ")
 
         css_content = css_content.replace(
             "." + old_class_name, "." + new_class_name)
