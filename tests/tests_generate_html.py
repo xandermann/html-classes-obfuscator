@@ -59,3 +59,9 @@ class TestsGenerateHTML(unittest.TestCase):
         new_html = html_classes_obfuscator.generate_html("<div class='max-w-[80%]'></div>", ["max-w-[80%]"], ["test_1"])
         expected_new_html = "<div class=test_1></div>"
         self.assertEqual(new_html, expected_new_html)
+
+    def test_generate_html_with_dash_no_quotes(self) -> None:
+        """Test with `-` when no quotes"""
+        new_html = html_classes_obfuscator.generate_html('<div class=flex><div class=flex-shrink></div></div>', ["flex", "flex-shrink"], ["test_1", "test_2"])
+        expected_new_html = '<div class=test_1><div class=test_2></div></div>'
+        self.assertEqual(new_html, expected_new_html)
